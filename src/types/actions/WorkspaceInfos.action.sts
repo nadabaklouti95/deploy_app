@@ -1,0 +1,11 @@
+
+export const GET_WORKSPACE_INFOS = "GET_WORKSPACE_INFOS";
+
+export interface loadstoreinfosType {
+    type: typeof GET_WORKSPACE_INFOS;
+    workspaceistsinfos: any[];
+}
+
+export interface GetStoresInfosType {
+    workspaceistsinfos: any[];
+}
