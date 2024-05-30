@@ -17,7 +17,7 @@ const Filter: React.FC<IFilter> = (props) => {
     const classes = useStyles()
     const [loading, setLoading] = useState<any>(false)
     const [selectedName, setSelectedName] = useState<any>(null);
-    const [autoCompleteName, setAutoCompleteName] = useState<string>("null");
+    const [autoCompleteName, setAutoCompleteName] = useState<string>("");
     let autoCompleteList = props.list? props.list : []
 
     const foundDateFilter = (date:any) => {

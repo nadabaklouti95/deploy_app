@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: AppTheme) => {
 
         formControlContainer: {
             display:"flex",
-            width:"400px"
+            width:"420px"
         },
         comboLabel: {
             display:"flex",

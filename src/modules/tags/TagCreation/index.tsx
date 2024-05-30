@@ -271,6 +271,7 @@ const CreateTag: React.FC<CreationTagProps> = ({
                             <Grid item={true} xs={12} sm={6} style={{padding:0}}>
                               <div style={{padding:"12px 12px 12px 12px"}}>
                                 <AccessTextField
+                                  id="textfield_description_add"
                                   actionType={ActionAccessMode.WRITE_MODE}
                                   name="description"
                                   label="Description"

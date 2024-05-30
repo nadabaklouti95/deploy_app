@@ -27,7 +27,7 @@ export default function ComboBox(props: ParentProps) {
   const [comboValue, SetComboValue] = useState<any>(initialValue);
   const [selectedStore, setSelectedStore] = useState<any>(null);
   const notify = (storeName : String) => toast.success("The store "+truncateStoreName(storeName)+" is now selected!",{autoClose: 3000,theme :"colored" });
-  const listWS = useSelector((state: AppState) => state.workspaces.workspaceslist);
+  const listWS = useSelector((state: AppState) => state.workspaces.workspaceslist.reverse());
   const cookieNameWS = "selectedWorkspace";
   const initialValueWS = document.cookie.split("; ").reduce((acc, cur) => cur.split("=")[0] === cookieNameWS ? `${acc}${cur.split("=")[1]}` : acc,"");
   const [comboValueWS, SetComboValueWS] = useState<any>(initialValueWS);
@@ -80,7 +80,7 @@ export default function ComboBox(props: ParentProps) {
     if(listWS.length > 0){
       let foundElementWS:any = listWS.find((obj:any)=> obj.workSpaceDTO.name === initialValueWS);
       if(foundElementWS === undefined || comboValueWS === ""){
-          dispatch(LoadComboWS(listWS[listWS.length-1].workSpaceDTO.name));
+          dispatch(LoadComboWS(listWS[0].workSpaceDTO.name));
           SetComboValueWS(listWS[0].workSpaceDTO.name);
           setSelectedWS(listWS[0]);
       } else {
@@ -90,7 +90,7 @@ export default function ComboBox(props: ParentProps) {
         if(storeList.length > 0){
           let foundElement:any = storeList.find((obj:any)=> obj.name === initialValue);
           if(foundElement === undefined || comboValue === ""){    
-            dispatch(LoadCombo(storeList[storeList.length-1].name));
+            dispatch(LoadCombo(storeList[0].name));
             SetComboValue(storeList[0].name);
             setSelectedStore(storeList[0]);
           } else {    
@@ -149,7 +149,7 @@ export default function ComboBox(props: ParentProps) {
                 <Autocomplete
                     fullWidth
                     id="comboBox_store"
-                    options={selectedWS?.storeList?selectedWS?.storeList:[]}
+                    options={selectedWS?.storeList?selectedWS?.storeList.reverse():[]}
                     getOptionLabel={(option) => option?option.name:"" }
                     value={selectedWS?.storeList?.length >0 ?selectedStore: ""}
                     onChange={(event, storeValue) => handleChange(storeValue)}
